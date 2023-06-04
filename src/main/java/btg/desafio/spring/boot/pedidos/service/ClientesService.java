@@ -15,9 +15,6 @@ public class ClientesService {
     @Autowired
     private ClientesRepository clientesRepository;
 
-//    @Autowired
-//    private PedidoRepository pedidosRepository;
-//
     @Autowired
     private ItensRepository itensRepository;
 
@@ -26,11 +23,11 @@ public class ClientesService {
 
     public void create(ClientesDTO clientesDTO) {
         Clientes clientes = mapper.map(clientesDTO, Clientes.class);
-//        Pedido pedidos = mapper.map(pedidosDTO, Pedido.class);
-//        Itens itens = mapper.map(itensDTO, Itens.class);
-
         clientesRepository.save(clientes);
-//        pedidosRepository.save(pedidos);
-//        itensRepository.save(itens);
     }
+
+//    public void buscarValorTotalDoPedido(ClientesDTO clientesDTO){
+//        Clientes clientes = mapper.map(clientesDTO, Clientes.class);
+//        clientesRepository.findBy()
+//    }
 }

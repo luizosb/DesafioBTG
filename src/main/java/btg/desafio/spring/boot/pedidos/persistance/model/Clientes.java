@@ -18,19 +18,8 @@ public class Clientes {
     private int pedido;
 
     @OneToMany(cascade=CascadeType.PERSIST)
-    @Column(name = "item")
-    private List<Itens> item;
-
-//    @OneToMany(cascade = CascadeType.ALL)
-//    private List<Pedido> pedidoList;
-//
-//    public List<Pedido> getPedidoList() {
-//        return pedidoList;
-//    }
-//
-//    public void setPedidoList(List<Pedido> pedidoList) {
-//        this.pedidoList = pedidoList;
-//    }
+    @Column(name = "itens")
+    private List<Itens> itens;
 
     public Long getCodigoCliente() {
         return codigoCliente;
@@ -48,11 +37,11 @@ public class Clientes {
         this.pedido = pedido;
     }
 
-    public List<Itens> getItem() {
-        return item;
+    public List<Itens> getItens() {
+        return itens;
     }
 
-    public void setItem(List<Itens> item) {
-        this.item = item;
+    public void setItens(List<Itens> itens) {
+        this.itens = itens;
     }
 }

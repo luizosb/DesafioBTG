@@ -6,7 +6,6 @@ import java.io.Serializable;
 
 public class ItensDTO implements Serializable {
 
-
     private String produto;
 
     private int qtd;

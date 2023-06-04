@@ -9,7 +9,7 @@ public class ClientesDTO implements Serializable {
 
     private int pedido;
 
-    private List<Itens> item;
+    private List<Itens> itens;
 
     public int getPedido() {
         return pedido;
@@ -19,12 +19,11 @@ public class ClientesDTO implements Serializable {
         this.pedido = pedido;
     }
 
-    public List<Itens> getItem() {
-        return item;
+    public List<Itens> getItens() {
+        return itens;
     }
 
-    public void setItem(List<Itens> item) {
-        this.item = item;
+    public void setItens(List<Itens> itens) {
+        this.itens = itens;
     }
-
 }
