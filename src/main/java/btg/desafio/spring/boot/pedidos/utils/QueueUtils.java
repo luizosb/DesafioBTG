@@ -1,7 +1,6 @@
 package btg.desafio.spring.boot.pedidos.utils;
 
-public interface QueueUtils {
+public class QueueUtils {
 
-    String EXCHANGE_NAME = "amq-direct";
-    String QUEUE_NAME="clients";
+    public static final  String FILA_CLIENTE = "CLIENTE";
 }

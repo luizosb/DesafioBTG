@@ -1,6 +1,8 @@
 package btg.desafio.spring.boot.pedidos.config;
 
-import jakarta.annotation.PostConstruct;
+import javax.annotation.PostConstruct;
+
+import btg.desafio.spring.boot.pedidos.utils.QueueUtils;
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.DirectExchange;
@@ -13,30 +15,40 @@ import static btg.desafio.spring.boot.pedidos.utils.QueueUtils.*;
 @Component
 public class MQConfig {
 
-    @Autowired
+    private static final String NOME_EXCHANGE = "amq.direct";
+
     private AmqpAdmin amqpAdmin;
 
-    private Queue queue(String queueName){
-        return new Queue(queueName, true, false, false);
+    public MQConfig(AmqpAdmin amqpAdmin) {
+        this.amqpAdmin = amqpAdmin;
     }
 
-    private DirectExchange directExchange(){
-        return new DirectExchange(EXCHANGE_NAME);
+    private Queue fila(String nomeFila){
+        return new Queue(nomeFila, true, false, false);
     }
 
-    private Binding relate(Queue queue, DirectExchange exchange){
-        return new Binding(queue.getName(), Binding.DestinationType.QUEUE,
-                directExchange().getName(), queue.getName(), null);
+    private DirectExchange trocaDireta(){
+        return new DirectExchange(NOME_EXCHANGE);
     }
 
-//    @PostConstruct
-//    private void create(){
-//        Queue queue = queue(QUEUE_NAME);
-//        DirectExchange directExchange = directExchange();
-//        Binding relate = relate(queue, directExchange);
-//
-//        amqpAdmin.declareQueue(queue);
-//        amqpAdmin.declareExchange(directExchange);
-//        amqpAdmin.declareBinding(relate);
-//    }
+    private Binding relacionamento(Queue fila, DirectExchange troca){
+        return new Binding(fila.getName(), Binding.DestinationType.QUEUE,
+                troca.getName(), fila.getName(), null);
+    }
+
+    /**
+     * Farei por último por falta de conhecimento de filas
+     */
+    //@PostConstruct
+    private void adiciona(){
+        Queue filaCliente = this.fila(FILA_CLIENTE);
+
+        DirectExchange troca = this.trocaDireta();
+
+        Binding ligacao = this.relacionamento(filaCliente, troca);
+
+        this.amqpAdmin.declareQueue(filaCliente);
+        this.amqpAdmin.declareExchange(troca);
+        this.amqpAdmin.declareBinding(ligacao);
+    }
 }
