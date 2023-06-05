@@ -17,7 +17,7 @@ public class Clientes {
     @Column(name = "pedido")
     private int pedido;
 
-    @OneToMany(cascade=CascadeType.PERSIST)
+    @OneToMany(cascade=CascadeType.ALL, mappedBy = "clientes")
     @Column(name = "itens")
     private List<Itens> itens;
 

@@ -22,7 +22,7 @@ public class ClientesController {
     @PostMapping("/v1")
     public ResponseEntity create(@RequestBody ClientesDTO clientesDTO){
         service.create(clientesDTO);
-        return new ResponseEntity(HttpStatus.CREATED);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
 //    @GetMapping

@@ -11,6 +11,10 @@ public class Itens {
     @Column(name = "id")
     private Long Id;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "codigo_cliente")
+    private Clientes clientes;
+
     @Column(name = "produto")
     private String produto;
     @Column(name = "qtd")
@@ -47,5 +51,13 @@ public class Itens {
 
     public void setPreco(double preco) {
         this.preco = preco;
+    }
+
+    public Clientes getClientes() {
+        return clientes;
+    }
+
+    public void setClientes(Clientes clientes) {
+        this.clientes = clientes;
     }
 }
