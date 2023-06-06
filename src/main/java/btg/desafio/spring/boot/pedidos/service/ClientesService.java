@@ -26,8 +26,11 @@ public class ClientesService {
         clientesRepository.save(clientes);
     }
 
-//    public void buscarValorTotalDoPedido(ClientesDTO clientesDTO){
-//        Clientes clientes = mapper.map(clientesDTO, Clientes.class);
-//        clientesRepository.findBy()
+    public double buscarValorTotalDoPedido(int codigoPedido){
+        return itensRepository.buscarValorMaximoPorPedido(codigoPedido);
+    }
+
+//    public int buscarPedidosPorCliente(int codigoCliente){
+//        return clientesRepository.buscarPedidosPorCliente(codigoCliente);
 //    }
 }

@@ -1,8 +1,5 @@
 package btg.desafio.spring.boot.pedidos.dto;
 
-import btg.desafio.spring.boot.pedidos.persistance.model.Clientes;
-import jakarta.persistence.Column;
-
 import java.io.Serializable;
 
 public class ItensDTO implements Serializable {
@@ -13,14 +10,14 @@ public class ItensDTO implements Serializable {
 
     private double preco;
 
-    private Clientes clientes;
+    private int codigoPedido;
 
-    public Clientes getClientes() {
-        return clientes;
+    public int getCodigoPedido() {
+        return codigoPedido;
     }
 
-    public void setClientes(Clientes clientes) {
-        this.clientes = clientes;
+    public void setCodigoPedido(int codigoPedido) {
+        this.codigoPedido = codigoPedido;
     }
 
     public String getProduto() {

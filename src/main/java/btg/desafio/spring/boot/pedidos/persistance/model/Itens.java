@@ -15,6 +15,9 @@ public class Itens {
     @JoinColumn(name = "codigo_cliente")
     private Clientes clientes;
 
+    @Column(name = "codigo_pedido")
+    private int codigoPedido;
+
     @Column(name = "produto")
     private String produto;
     @Column(name = "qtd")
@@ -59,5 +62,13 @@ public class Itens {
 
     public void setClientes(Clientes clientes) {
         this.clientes = clientes;
+    }
+
+    public int getCodigoPedido() {
+        return codigoPedido;
+    }
+
+    public void setCodigoPedido(int codigoPedido) {
+        this.codigoPedido = codigoPedido;
     }
 }

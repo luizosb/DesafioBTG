@@ -11,30 +11,41 @@ public class Clientes {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "codigo_cliente")
-    private Long codigoCliente;
+    @Column(name = "id")
+    private Long id;
 
-    @Column(name = "pedido")
-    private int pedido;
+    @Column(name = "codigo_cliente")
+    private int codigoCliente;
+
+    @Column(name = "codigo_pedido")
+    private int codigoPedido;
 
     @OneToMany(cascade=CascadeType.ALL, mappedBy = "clientes")
     @Column(name = "itens")
     private List<Itens> itens;
 
-    public Long getCodigoCliente() {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public int getCodigoCliente() {
         return codigoCliente;
     }
 
-    public void setCodigoCliente(Long codigoCliente) {
+    public void setCodigoCliente(int codigoCliente) {
         this.codigoCliente = codigoCliente;
     }
 
-    public int getPedido() {
-        return pedido;
+    public int getCodigoPedido() {
+        return codigoPedido;
     }
 
-    public void setPedido(int pedido) {
-        this.pedido = pedido;
+    public void setCodigoPedido(int codigoPedido) {
+        this.codigoPedido = codigoPedido;
     }
 
     public List<Itens> getItens() {
